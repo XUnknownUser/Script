@@ -1,0 +1,50 @@
+
+local xx = function(Ev)
+	if Ev == "" then
+		return nil
+	elseif Ev == "random" then
+		return game:GetService("Players"):GetPlayers()[math.random(1, #game:GetService("Players"):GetPlayers())]
+	else
+		for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #Ev) == Ev:lower() or v.DisplayName:lower():sub(1, #Ev) == Ev then
+				return v
+			end
+		end
+	end
+end
+
+game.Players.LocalPlayer.Backpack["رقصة 1"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 2"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 3"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 4"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 5"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 6"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 7"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 8"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 9"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 01"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 11"]:Destroy()
+game.Players.LocalPlayer.Backpack["رقصة 21"]:Destroy()
+wait()
+local args = {
+    [1] = ";size me 4"
+    }
+    game:GetService("ReplicatedStorage").HDAdminClient.Signals.RequestCommand:InvokeServer(unpack(args))
+wait(0.3)
+local plr = game.Players.LocalPlayer
+plr.Character.Humanoid:UnequipTools()
+local Humanoid = plr.Character.Humanoid:Clone()
+local Target = xx(_G.User)
+local Tool = plr.Backpack:FindFirstChildOfClass("Tool")
+
+	plr.Character.Humanoid:Clone().Parent = plr.Character
+	plr.Character.Humanoid:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = plr.Character.Head
+	plr.Character.Animate.Disabled = true
+	plr.Character.Humanoid:Destroy()
+	Humanoid.Parent = plr.Character
+	Tool.Parent = plr.Character
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState()
+	firetouchinterest(Target.Character.HumanoidRootPart, Tool.Handle, 0);
+wait(0.01)
+game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
